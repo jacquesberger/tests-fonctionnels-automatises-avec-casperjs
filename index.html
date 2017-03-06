@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>ConFoo 2017 - Jacques Berger</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/code3.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section id="premiere">
+					<h3>#confoo 2017</h3>
+					<h3>Tests fonctionnels automatisés avec CasperJS</h3>
+          <br/><br/>
+					<p>
+						<small>Jacques Berger</small>
+					</p>
+          <br>
+          <br>
+          <div style="text-align:center">
+            <img src="images/logo.png" style="width:100px;border:none;box-shadow:none;">
+          </div>
+				</section>
+
+        <section>
+          <h3>Objectifs</h3>
+          <ul>
+            <li>Clarifier le terme test fonctionnel automatisé</li>
+            <li>Introduire CasperJS</li>
+            <li>Intégrer CasperJS à Jenkins</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Vue d'ensemble</h3>
+          <ul>
+            <li>TODO</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Tests fonctionnels</h3>
+          <p>Les tests fonctionnels sont des tests sur les fonctionnalités d'un logiciel, souvent effectués via son interface utilisateur.</p>
+        </section>
+
+        <section>
+          <h3>Tests automatisés</h3>
+          <p>Les tests automatisés sont programmés et peuvent être exécutés sur demande. On s'en sert comme tests de régression une fois que la fonctionnalité est terminée.</p>
+        </section>
+
+        <section>
+          <h3>Outils automatisés</h3>
+          <p>Certains outils vont enregistrer les actions de l'utilisateur et générer un script les reproduisant.</p>
+          <p>D'autres outils permettent de rédiger nous-même le script (nécessites les compétences d'un programmeur).</p>
+        </section>
+
+        <section>
+          <h3>CasperJS</h3>
+          <p>CasperJS est un outil servant à scripter la navigation et l'interaction avec une application web.</p>
+          <p>Version stable courante : 1.1.4</p>
+        </section>
+
+        <section>
+          <h3>Dépendances</h3>
+          <p>CasperJS nécessite l'installation de deux logiciels pour fonctionner :</p>
+          <ul>
+            <li>Python 2.6 ou +</li>
+            <li>PhantomJS 1.9.1 ou +</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Sans fureteur</h3>
+          <p>Il permet d'exécuter une application web en mémoire, sans avoir besoin d'ouvrir un fureteur.</p>
+          <p>L'interprétation du HTML/CSS/Javascript est faite par PhantomJS, qui utilise le moteur WebKit.</p>
+        </section>
+
+        <!-- <section> -->
+          <!-- <h3>Conclusion</h3> -->
+          <!-- <ul> -->
+            <!-- <li>Rewriting the frontend only might be enough for most needs.</li> -->
+            <!-- <li>It lowers the rewriting costs and does not void your initial investments.</li> -->
+          <!-- </ul> -->
+        <!-- </section> -->
+
+        <!-- <section> -->
+          <!-- <h3>Closing thought</h3> -->
+          <!-- <p>If you are ready to invest a large amount of money on rewriting a software, -->
+             <!-- why not invest in refactoring and modernization?</p> -->
+          <!-- <small>It might cost less.</small> -->
+        <!-- </section> -->
+
+        <section>
+          <h3>Merci pour votre temps!</h3>
+          <p>Des questions?</p>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+        slideNumber: true,
+				center: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
