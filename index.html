@@ -53,6 +53,15 @@
         </section>
 
         <section>
+          <h3>Prérequis</h3>
+          <p>Ce qu'il faut savoir pour apprécier cette présentation :</p>
+          <ul>
+            <li>HTML/CSS</li>
+            <li>Javascript</li>
+          </ul>
+        </section>
+
+        <section>
           <h3>Vue d'ensemble</h3>
           <ul>
             <li>TODO</li>
@@ -94,6 +103,40 @@
           <h3>Sans fureteur</h3>
           <p>Il permet d'exécuter une application web en mémoire, sans avoir besoin d'ouvrir un fureteur.</p>
           <p>L'interprétation du HTML/CSS/Javascript est faite par PhantomJS, qui utilise le moteur WebKit.</p>
+          <p><small>Possibilité d'utiliser Gecko au lieu de WebKit en remplaçant PhantomJS par SlimerJS.</small></p>
+        </section>
+
+        <section>
+          <h3>Utilisation</h3>
+          <p>Pour exécuter un script de test :</p>
+          <pre><code class="bash">casperjs test script.js</code></pre>
+        </section>
+
+        <section>
+          <h3>Utilisation</h3>
+          <p>Pour exécuter tous les scripts de test dans un répertoire et ses sous-répertoires</p>
+          <pre><code class="bash">casperjs test repertoire/</code></pre>
+        </section>
+
+        <section>
+          <h3>Cadre de base</h3>
+          <pre><code class="javascript">casper.test.begin("Description du test", function(test) {
+  casper.start('http://jberger.org/');
+
+  casper.then(function(){
+    // étape
+  });
+
+  casper.run(function(){
+    test.done();
+  });
+});</code></pre>
+        </section>
+
+        <section>
+          <h3>Exportation des résultats</h3>
+          <p>Il est possible d'exporter le résultat des tests en format xUnit.</p>
+          <pre><code class="bash">casperjs test repertoire --xunit=log.xml</code></pre>
         </section>
 
         <!-- <section> -->
