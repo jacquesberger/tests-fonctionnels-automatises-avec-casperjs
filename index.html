@@ -64,7 +64,12 @@
         <section>
           <h3>Vue d'ensemble</h3>
           <ul>
-            <li>TODO</li>
+            <li>Terminologie</li>
+            <li>Introduction à CasperJS</li>
+            <li>Navigation</li>
+            <li>Fonctions utiles</li>
+            <li>Assertions</li>
+            <li>Intégration à Jenkins</li>
           </ul>
         </section>
 
@@ -88,6 +93,11 @@
           <h3>CasperJS</h3>
           <p>CasperJS est un outil servant à scripter la navigation et l'interaction avec une application web.</p>
           <p>Version stable courante : 1.1.4</p>
+        </section>
+
+        <section>
+          <h3>CasperJS</h3>
+          <p>Comme les tests sont du code Javascript, on peut placer le code source des tests dans le même dépôt que le code source. La proximité des tests avec le code incite les développements à exécuter les tests plus souvent.</p>
         </section>
 
         <section>
@@ -134,25 +144,159 @@
         </section>
 
         <section>
+          <h3>open</h3>
+          <p>Pour les requêtes un peu plus complexes, on peut utiliser la méthode <code>open</code> qui envoie une requête HTTP avec plusieurs paramètres.</p>
+          <pre><code class="javascript">var settings = {
+  method: 'post',
+  data: {firstname:'Jacques', lastname:'Berger'},
+  headers: {'Accept-Charset': 'utf-8'}
+};
+casper.open('http://jberger.org/create', settings);</code></pre>
+        </section>
+
+        <section>
+          <h3>then</h3>
+          <p>La fonction <code>then</code> sert à ajouter une étape dans la manipulation de la page.</p>
+          <pre><code class="javascript">casper.then(function() {
+  this.wait(1000);
+});</code></pre>
+        </section>
+
+        <section>
+          <h3>then</h3>
+          <p>Il y a aussi :</p>
+          <ul>
+            <li><code>thenClick</code></li>
+            <li><code>thenEvaluate</code></li>
+            <li><code>thenOpen</code></li>
+            <li><code>thenOpenAndEvaluate</code></li>
+            <li>et plusieurs autres.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>click</h3>
+          <p>Simule un clique de souris sur l'élément spécifié par le sélecteur en paramètre.</p>
+          <pre><code class="javascript">casper.then(function() {
+  this.click("form.form-search button");
+});</code></pre>
+        </section>
+
+        <section>
+          <h3>Utiliser un formulaire</h3>
+          <p>La fonction <code>fill(selector, values, submit)</code> sert à remplir un formulaire et potentiellement le soumettre.</p>
+          <pre><code class="javascript">casper.start('http://localhost:3003/', function() {
+  var credentials = {username:"berger", password:"secret"};
+  this.fill("form[action='/login']", credentials, true);
+});</code></pre>
+        </section>
+
+        <section>
+          <h3>Fonctions sur <code>casper</code></h3>
+          <p>Plusieurs fonctions utiles peuvent être appelées sur <code>casper</code> :</p>
+          <ul>
+            <li><code>setHttpAuth(username, password)</code></li>
+            <li><code>evaluate(fct, arg1, arg2, ...)</code></li>
+            <li><code>getCurrentUrl()</code></li>
+            <li><code>fetchText(selector)</code></li>
+            <li><code>getTitle()</code></li>
+            <li><code>getElementAttribute(selector, attribute)</code></li>
+            <li><code>back()</code></li>
+            <li><code>forward()</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Fonctions sur <code>casper</code></h3>
+          <ul>
+            <li><code>download(url, filePath)</code></li>
+            <li><code>echo(message)</code></li>
+            <li><code>mouseEvent(type, selector)</code></li>
+            <li><code>reload()</code></li>
+            <li><code>visible(selector)</code></li>
+            <li><code>wait(timeout)</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Screenshot</h3>
+          <p>Les fonctions <code>capture(filepath)</code> et <code>captureSelector(filepath, selector)</code> permettent de faire un screenshot de la page au complet.</p>
+          <pre><code class="javascript">casper.then(function(){
+  this.capture("inf4150.png");
+});</code></pre>
+        </section>
+
+        <section>
+          <h3>Assertions</h3>
+          <p>Les assertions s'exécutent sur la variable <code>test</code>.</p>
+          <pre><code class="javascript">casper.then(function() {
+  test.assertEquals(this.getCurrentUrl(), "http://localhost:3003/");
+});</code></pre>
+        </section>
+
+        <section>
+          <h3>Assertions</h3>
+          <ul>
+            <li><code>assert(bool)</code></li>
+            <li><code>assertEquals(value, expected)</code></li>
+            <li><code>assertElementCount(selector, count)</code></li>
+            <li><code>assertExists(selector)</code></li>
+            <li><code>assertFalsy(exp)</code></li>
+            <li><code>assertTruthy(exp)</code></li>
+            <li><code>assertHttpStatus(status)</code></li>
+            <li><code>assertNot(exp)</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Assertions</h3>
+          <ul>
+            <li><code>assertNotEquals(value, expected)</code></li>
+            <li><code>assertNotVisible(selector)</code></li>
+            <li><code>assertSelectorDoesntHaveText(selector, text)</code></li>
+            <li><code>assertSelectorHasText(selector, text)</code></li>
+            <li><code>assertTitle(expected)</code></li>
+            <li><code>assertVisible(selector)</code></li>
+            <li><code>fail()</code></li>
+            <li><code>pass()</code></li>
+          </ul>
+        </section>
+
+        <section>
           <h3>Exportation des résultats</h3>
           <p>Il est possible d'exporter le résultat des tests en format xUnit.</p>
           <pre><code class="bash">casperjs test repertoire --xunit=log.xml</code></pre>
         </section>
 
-        <!-- <section> -->
-          <!-- <h3>Conclusion</h3> -->
-          <!-- <ul> -->
-            <!-- <li>Rewriting the frontend only might be enough for most needs.</li> -->
-            <!-- <li>It lowers the rewriting costs and does not void your initial investments.</li> -->
-          <!-- </ul> -->
-        <!-- </section> -->
+        <section>
+          <h3>Intégration à Jenkins</h3>
+          <img src="images/Jenkins01.png" alt="Script shell">
+        </section>
 
-        <!-- <section> -->
-          <!-- <h3>Closing thought</h3> -->
-          <!-- <p>If you are ready to invest a large amount of money on rewriting a software, -->
-             <!-- why not invest in refactoring and modernization?</p> -->
-          <!-- <small>It might cost less.</small> -->
-        <!-- </section> -->
+        <section>
+          <h3>Intégration à Jenkins</h3>
+          <img src="images/Jenkins02.png" alt="Tâche après le build">
+        </section>
+
+        <section>
+          <h3>Intégration à Jenkins</h3>
+          <img src="images/Jenkins03.png" alt="Résultat1">
+        </section>
+
+        <section>
+          <h3>Intégration à Jenkins</h3>
+          <img src="images/Jenkins04.png" alt="Résultat2">
+        </section>
+
+        <section>
+          <h3>Conclusion</h3>
+          <p>Le temps passé à rédiger les tests avec Casperjs est non négligeable. Cependant, le temps économisé en tests manuels qui ne devront plus être faits vaut grandement l'investissement.</p>
+        </section>
+
+        <section>
+          <h3>Référence</h3>
+          <a href="http://casperjs.org/">http://casperjs.org/</a>
+        </section>
 
         <section>
           <h3>Merci pour votre temps!</h3>
